@@ -1,17 +1,23 @@
-n = gets.chomp.to_i
-array = []
+n, k = gets.split(" ").map(&:to_i)
 
-n.times do
-  array << gets.chomp.to_i
+if n <= k
+    a = n
+else
+    a = k
 end
 
-array_max = array.sort.reverse
-i = 0
+i = 1
+ans = 0
 
-n.times do |i|
-    if array[i] != array_max[0]
-        puts array_max[0]
-    else
-        puts array_max[1]
+a.times do
+    b = 0
+    while i < k
+        i *= 2
+        b += 1
     end
+    ans += Rational(1, n)*(1/2)**b
+    i += 1
+    puts ans
 end
+
+puts ans.to_f
