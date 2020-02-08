@@ -1,10 +1,33 @@
-n = gets.chomp.to_i
-p = gets.split(" ").map(&:to_i)
-q = gets.split(" ").map(&:to_i)
-
+n, d = gets.split(" ").map(&:to_i)
 array = []
-(1..n).to_a.permutation do |x|
-    array << x
+n.times do
+    array << gets.split(" ").map(&:to_i)
 end
 
-puts (array.index(p) - array.index(q)).abs
+array_com = []
+
+array.combination(2) do |x|
+    array_com << x
+end
+
+cul_m = 0
+result = []
+
+array_com.each do |x|
+    d.times do |i|
+        cul_m += (x[0][i-1] - x[1][i-1])**2
+    end
+    result << Math.sqrt(cul_m)
+    cul_m =0
+end
+
+ans = 0
+
+result.each do |x|
+    if x == x.to_i
+        ans += 1
+    end
+end
+
+puts ans
+
