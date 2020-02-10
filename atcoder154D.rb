@@ -1,19 +1,12 @@
-# TLE
-
 n, k = gets.split(" ").map(&:to_i)
-array = gets.split(" ").map(&:to_i)
-array_pick =[[0, 0]]
+array = gets.split(" ").map(&:to_i).map{|n| (1 + n) / 2.to_f }
+rerult_sum = array[0..(k-1)].inject(:+)
+array_add = [rerult_sum]
 
-(n-k+1).times do |i|
-    if array_pick[-1].inject(:+) < array[i..i+(k-1)].inject(:+)
-        array_pick << array[i..i+(k-1)]
-    end
+(n - k).times do |i|
+    rerult_sum -= array[i]
+    rerult_sum += array[i+k]
+    array_add << rerult_sum
 end
 
-result = 0
-
-array_pick[-1].each do |x|
-    result += (x+1)/2.to_f
-end
-
-puts result
+puts array_add.max
