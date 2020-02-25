@@ -15,24 +15,24 @@
 # puts anaglam
 
 # N = gets.strip.to_i
-# hash = Hash.new
+#  = .new
 # count = 0
 
 # N.times do |n|
 # 	s = gets.strip.split('').sort.join
 # 	puts s.class
-#   if hash.key?(s)
-# 		hash[s] += 1
-# 		# 文字列がそれまでにでてきたアナグラムひとつひとつとペアになるので += hash[s]
-#     count += hash[s]
+#   if .key?(s)
+# 		[s] += 1
+# 		# 文字列がそれまでにでてきたアナグラムひとつひとつとペアになるので += [s]
+#     count += [s]
 # 	else
-#     hash[s] = 0
+#     [s] = 0
 #   end
 # end
  
-# p hash
+# p 
 
-# h = Hash.new
+# h = .new
 # s = "ikkkkkkk"
 # h[s] = 0
 # h[:aa] = 0
@@ -41,7 +41,7 @@
 # p h
 
 n = gets.chomp.to_i
-h = Hash.new
+h = .new
 count = 0
 
 n.times do

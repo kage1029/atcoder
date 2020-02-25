@@ -1,9 +1,20 @@
-n, k = gets.split(" ").map(&:to_i)
-array = gets.split(" ").map(&:to_i)
- 
-array_shaffle = []
-array.combination(2) do |x|
-    array_shaffle << x[0]*x[1]
+n = gets.to_i
+array = []
+n.times do
+  array << gets.chomp.to_s
 end
-
-puts array_shaffle.sort[k-1]
+ 
+ans = array.group_by(&:itself).map{|k, v| [k, v.count]}.sort_by{|k,n| -n}
+p ans
+ans_name = [ans[0][0]]
+ 
+ans_cut = ans[1..-1]
+ans_cut.each do |x|
+    if ans[0][1] == x[1]
+        ans_name << x[0]
+    else
+        break
+    end
+end
+ 
+puts ans_name.sort
