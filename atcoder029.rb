@@ -1,13 +1,22 @@
+# メソッドを使って解くやりかた
+
 n = gets.chomp.to_i
-ary_a = Array.new(n, "a")
-ary_b = Array.new(n, "b")
-ary_c = Array.new(n, "c")
+["a", "b", "c"].repeated_permutation(n){|x| puts x.join}
 
-ary = ary_a + ary_b + ary_c
-ans = []
+# 再帰を使って解くやり方
 
-ary.permutation(n) do |x|
-  ans << x.join
+n = gets.chomp.to_i
+
+def pass(cnd, x)
+  if cnd.size == x
+    puts cnd
+    return
+  else
+    pass(cnd + "a", x)
+    pass(cnd + "b", x)
+    pass(cnd + "c", x)
+  end
 end
 
-puts ans.uniq
+cnd = ""
+pass(cnd, n)
